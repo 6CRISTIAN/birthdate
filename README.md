@@ -7,13 +7,13 @@ This project calculates the age and days remaining to a person's birthday; if it
 2. the front-end project is made with TypeScript using Angular
     - path: birthdate/front-end/birthdate
 
-## How to deploy back-end
+## How to deploy back-end in localhost:
 
 * steps:
     1. you need to be in the birthdate/back-end/birthdate folder from terminal.
     2. run this command: "mvn spring-boot:run".
 
-## How to deploy front-end
+## How to deploy front-end in localhost:
 
 * steps:
     1. you need to be in the birthdate/front-end/birthdate folder from terminal.
