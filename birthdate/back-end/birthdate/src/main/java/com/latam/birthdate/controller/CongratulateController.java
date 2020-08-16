@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class CongratulateController {
 
     @Autowired
-    CongratulateImp congratulateImp;
+    CongratulateImp congratulateImp = new CongratulateImp();
 
     @PostMapping
-    private ResponseEntity<UserInfoDto> getUserAgeInfo(@RequestBody User user) {
+    public ResponseEntity<UserInfoDto> getUserAgeInfo(@RequestBody User user) {
+        if (null == user.getName() || null == user.getSurname() || null == user.getBirthdate())
+            return new ResponseEntity("Bad fields, check them.", HttpStatus.BAD_REQUEST);
         try {
-            return new ResponseEntity(congratulateImp.getPersonInfo(user), HttpStatus.OK);
+            return new ResponseEntity(congratulateImp.getUserInfo(user), HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

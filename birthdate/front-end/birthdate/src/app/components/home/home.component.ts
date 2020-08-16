@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserInfo } from 'src/app/models/user-info.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +42,18 @@ export class HomeComponent implements OnInit {
       this.post(this.form.value)
         .subscribe(
           (res: UserInfo) => this.renderInf(res),
-          err => { console.log(err) }
+          err => {
+            this.loading = false
+            this._snackBar.open(
+              'Hubo un error de conección con nuestro servicio',
+              'OK',
+              {
+                duration: 3600,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'center'
+              }
+            ); console.log(err)
+          }
         )
     }
   }
