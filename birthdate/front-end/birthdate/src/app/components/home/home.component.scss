@@ -1,0 +1,124 @@
+:host ::ng-deep body {
+    background-color: #302e2e !important;
+}
+.container-fluid.poem  {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/images/planet.jpg") !important;
+}
+section {
+    height: 102vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/images/planet.jpg");
+    background-size: cover;
+    position: relative;
+}
+.return {
+    color: aliceblue;
+}
+.crimson {
+    font-weight: bold;
+    color: crimson;
+}
+.info p {
+    height: 63vh;
+    overflow: scroll;
+}
+.p-15 {
+    padding-top: 15% !important;
+}
+.name {
+    color: deeppink;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.row-container {
+    height: 100%;
+}
+input {
+    color: #fff;
+}
+mat-form-field {
+    width: 70%;
+}
+.datepicker {
+    width: 81%;
+}
+form {
+    width: 30%;
+}
+.col-xs-3 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.poet {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5%;
+    font-style: italic;
+}
+.animated-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.delay-3 {
+    animation-delay: 0.3s;
+}
+.delay-6 {
+    animation-delay: 0.6s;
+}
+.delay-9 {
+    animation-delay: 0.9s;
+}
+.square,
+.triangle,
+.hexagon {
+    width: 21px;
+    height: 21px;
+    position: relative;
+    animation-name: up, rotate;
+    animation-duration: 3s, 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+}
+
+.square {
+    background-color: #a6a89f;
+    position: relative;
+}
+.square:before {
+    content: "";
+    width: 18.9px;
+    height: 18.9px;
+    background: #302e2e;
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+.triangle {
+    background-color: #424246;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.hexagon {
+    background-color: #474447;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+@keyframes up {
+    0% {
+        top: 0;
+        opacity: 0.3;
+    }
+    100% {
+        top: calc(-102vh + 9%);
+        opacity: 0.1;
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: scale(2.1, 2.1);
+    }
+    100% {
+        transform: rotate(-180deg) translateX(30px) scale(1, 1);
+    }
+}

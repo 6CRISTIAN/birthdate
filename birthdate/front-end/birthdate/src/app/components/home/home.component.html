@@ -1,0 +1,111 @@
+<section>
+    <div class="container-fluid p-0 {{showInfo?'p-5 poem':'p-15'}}">
+        <div *ngIf="!showInfo" class="row center-xs middle-xs row-container animated fadeIn">
+            <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading">
+                <div class="col-xs-12">
+                    <div class="row center-xs middle-xs">
+                        <div class="col-xs-12">
+                            <div>
+                                <button type="submit" mat-fab color="primary" 
+                                [disabled]="form.invalid">
+                                    Enviar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="row center-xs middle-xs">
+                        <div class="col-xs-12">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Nombres</mat-label>
+                                <input matInput formControlName="name" 
+                                placeholder="Ej. Gabriel Antonio" autocomplete="off">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="row center-xs middle-xs">
+                        <div class="col-xs-12">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Apellidos</mat-label>
+                                <input matInput formControlName="surname"
+                                placeholder="Ej. Gómez Escobar" autocomplete="off">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="row center-xs middle-xs">
+                        <div class="col-xs-12">
+                            <p>
+                                <mat-form-field appearance="fill" class="datepicker">
+                                    <mat-label>birthdate</mat-label>
+                                    <input matInput [matDatepicker]="dp" 
+                                    disabled formControlName="birthdate">
+                                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                    <mat-datepicker #dp disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <mat-spinner *ngIf="loading" color="warn"></mat-spinner>
+        </div>
+        <div *ngIf="showInfo" class="row center-xs row-container animated fadeIn">
+            <div class="col-xs-7 {{userInfo.remainingDays > 0?'':'info'}}" style="color:aliceblue">
+                <p>
+                    <span class="name">{{userInfo.name | titlecase}}</span><br><br>
+                    <span *ngIf="userInfo.remainingDays > 0" class="crimson">
+                        En {{userInfo.remainingDays}} días cumplirás 
+                        {{userInfo.age > 0 ? userInfo.age+1+' años' : userInfo.age+1+' año'}}.
+                    </span><br>
+                    <span *ngIf="userInfo.remainingDays <= 0">
+                        <span class="crimson">
+                            ¡Feliz día! ¡éxitos!<br>Recibe este dulce poema.
+                        </span><br><br>
+                        {{userInfo.poem.title}}<br><br>
+                        {{userInfo.poem.content}}<br>
+                        <span class="poet">{{userInfo.poem.poet.name}}</span>
+                    </span><br>
+                    {{form.get('birthdate').value | date: 'dd/MM/yy'}}<br>
+                    <span>
+                        Tu edad,
+                        {{userInfo.age == 0 ? userInfo.age+' años' : userInfo.age+' año'}}.
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div *ngIf="showInfo" class="row center-xs row-container animated fadeIn mt-5">
+            <div class="col-xs-3">
+                <button mat-stroked-button class="return" (click)="reset()">Volver</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0 animated-content animated fadeIn">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="square delay-6"></div>
+                <div class="triangle delay-9"></div>
+                <div class="hexagon delay-3"></div>
+            </div>
+            <div class="col-xs-3">
+                <div class="triangle delay-6"></div>
+                <div class="square delay-3"></div>
+                <div class="hexagon delay-9"></div>
+            </div>
+            <div class="col-xs-3">
+                <div class="square delay-6"></div>
+                <div class="triangle delay-9"></div>
+                <div class="hexagon delay-3"></div>
+            </div>
+            <div class="col-xs-3">
+                <div class="triangle delay-3"></div>
+                <div class="square delay-9"></div>
+                <div class="hexagon delay-6"></div>
+            </div>
+        </div>
+    </div>
+</section>
